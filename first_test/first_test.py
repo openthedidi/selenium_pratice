@@ -56,7 +56,7 @@ except Exception as e:
     print(f"找不到元素，錯誤: {e}")
 
 # chrom_drive.find_element(By.NAME, "password").send_keys("admin123")
-# 使用 XPath 根據 type='submit' 屬性來定位登入按鈕，這是最穩定的方式
+# 使用 XPath 根據 type='submit' 屬性來定位登入按鈕
 # chrom_drive.find_element(By.XPATH, "//button[@type='submit']").click()
 # 使用 . 來代表 class
 # chrom_drive.find_element(By.CSS_SELECTOR, ".login-button")
