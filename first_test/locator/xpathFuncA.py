@@ -55,6 +55,7 @@ print(len(btns4))
 
 
 # ========= text()=============
+# !!為精準查詢
 
 divs = chrom_drive.find_elements(By.XPATH, "//div[text()='熱門搜尋']")
 print(len(divs))
