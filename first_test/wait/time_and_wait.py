@@ -19,7 +19,7 @@ chrom_drive.maximize_window()
 # chrom_drive.implicitly_wait(5)
 
 # explicit wait
-# parameter:
+# parameter: 超時還是會噴TimeoutException
 wait_setting = WebDriverWait(
     chrom_drive, timeout=10, ignored_exceptions=Exception, poll_frequency=0.5)
 
