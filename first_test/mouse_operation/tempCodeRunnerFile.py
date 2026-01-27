@@ -1,1 +1,0 @@
-ttps://www.globalsqa.com/demo-site/sliders/#Range
