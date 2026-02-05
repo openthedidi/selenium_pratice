@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import openpyxl
-from first_test.excel_demo import excel_utils
+from utils import excel_utils
 
 
 chrom_drive = webdriver.Chrome()
