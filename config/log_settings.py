@@ -1,9 +1,9 @@
 """
 Logging 設定模組
 
-提供專案統一的 logging 設定，支援同時輸出到 console 與檔案。
-採用 TimedRotatingFileHandler 每日自動輪替，保留 7 天。
-搭配自訂 RotatingSizeHandler 限制單日檔案大小，超過時自動編號備份。
+會輸出到 console 與檔案。
+TimedRotatingFileHandler： 每日自動輪替，保留 7 天。
+RotatingSizeHandler： 限制單日檔案大小，超過時自動編號備份。
 
 使用方式:
     from config.log_settings import setup_logging
@@ -27,7 +27,8 @@ import os
 from logging.handlers import TimedRotatingFileHandler, RotatingFileHandler
 
 # 預設 log 檔案存放目錄（專案根目錄下的 logs/）
-_DEFAULT_LOG_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "logs")
+_DEFAULT_LOG_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)), "logs")
 
 # console 格式：簡潔，方便即時查看
 _CONSOLE_FORMAT = "%(asctime)s [%(levelname)s] %(name)s - %(message)s"
@@ -80,7 +81,8 @@ def setup_logging(
     # 輸出到終端機，顯示簡潔格式
     console_handler = logging.StreamHandler()
     console_handler.setLevel(console_level)
-    console_handler.setFormatter(logging.Formatter(_CONSOLE_FORMAT, _DATE_FORMAT))
+    console_handler.setFormatter(
+        logging.Formatter(_CONSOLE_FORMAT, _DATE_FORMAT))
 
     # --- Timed File Handler ---
     # 每日午夜自動輪替（midnight），檔案命名如 app.log.2026-02-05
