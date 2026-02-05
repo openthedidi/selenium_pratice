@@ -55,7 +55,8 @@ def format_validate_phone(error_message_list, short_wait):
 
 
 # ---- test data read from excel
-excel_file = os.path.join(os.path.dirname(__file__), "test_data", "Test_Case_carloan_messagebroad_final.xlsx")
+excel_file = os.path.join(os.path.dirname(
+    __file__), "test_data", "Test_Case_carloan_messagebroad_final.xlsx")
 
 workbook = openpyxl.load_workbook(excel_file)
 
@@ -133,6 +134,4 @@ for row in range(5, rows_number + 1):
         excel_utils.fillGreenColor(excel_file, "TestData", row, 8)
         excel_utils.writeData(excel_file, "TestData", row, 8, "pass")
 
-
-input("123")
 chrom_drive.quit()
