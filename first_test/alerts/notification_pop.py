@@ -8,13 +8,13 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument("--disable-notifications")
 
 
-chrom_drive = webdriver.Chrome(options=chrome_options)
-chrom_drive.get("https://whatmylocation.com")
+driver = webdriver.Chrome(options=chrome_options)
+driver.get("https://whatmylocation.com")
 
-chrom_drive.maximize_window()
+driver.maximize_window()
 
 time.sleep(3)
 
 
 input("Press Enter to close the browser...")
-chrom_drive.quit()
+driver.quit()

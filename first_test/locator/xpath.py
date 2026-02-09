@@ -18,32 +18,32 @@ from selenium.webdriver.common.by import By
 import time
 
 
-chrom_drive = webdriver.Chrome()
+driver = webdriver.Chrome()
 
 
-chrom_drive.get(
+driver.get(
     "https://www.nanshanlife.com.tw/nanshanlife/")
-chrom_drive.maximize_window()
+driver.maximize_window()
 
 time.sleep(5)
 
 #
 
-# search_btn = chrom_drive.find_element(
+# search_btn = driver.find_element(
 #     By.XPATH, "//div[@class='header__search-open-icon ng-tns-c121-0']//nxtle-icon[@class='ng-tns-c121-0']//*[name()='svg']")
 
-search_btn = chrom_drive.find_element(
+search_btn = driver.find_element(
     By.XPATH, "/html/body/app-root/rdr-render/rdr-templates-container/rdr-dynamic-wrapper/nanshan-portal-layout/nanshan-empty-layout/div/nxtle-full-height-layout/div/div[1]/div/nanshan-header-template/nanshan-header/header/div[2]/div/div[2]/button[1]")
 
 
 search_btn.click()
 
-search_input = chrom_drive.find_element(
+search_input = driver.find_element(
     By.XPATH, "//div[@class='header-search__search-box']//input[@id='search']")
 
 search_input.send_keys("20")
 
-search_btn_star = chrom_drive.find_element(
+search_btn_star = driver.find_element(
     By.XPATH, "//button[@class='input-search-bar__search-button-submit']//nxtle-icon[@icon='search']//*[name()='svg']")
 
 search_btn_star.click()

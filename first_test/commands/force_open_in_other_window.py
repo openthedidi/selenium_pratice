@@ -8,12 +8,12 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 
 
-chrom_drive = webdriver.Chrome()
-chrom_drive.get("https://www.taiwanlife.com/index")
+driver = webdriver.Chrome()
+driver.get("https://www.taiwanlife.com/index")
 
-chrom_drive.maximize_window()
+driver.maximize_window()
 
-wait_setting = WebDriverWait(chrom_drive, 10)
+wait_setting = WebDriverWait(driver, 10)
 
 en_link = wait_setting.until(
     EC.presence_of_element_located((By.XPATH, "//a[contains(.,'EN')]")))
@@ -22,10 +22,10 @@ en_link = wait_setting.until(
 # en_link.send_keys(Keys.CONTROL + Keys.RETURN)
 
 # --------方法二
-act = ActionChains(chrom_drive)
+act = ActionChains(driver)
 act.key_down(Keys.CONTROL).click(en_link).key_up(Keys.CONTROL).perform()
 
 
 time.sleep(5)
 
-chrom_drive.quit()
+driver.quit()

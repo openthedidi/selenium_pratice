@@ -7,12 +7,12 @@ import openpyxl
 from utils import excel_utils
 
 
-chrom_drive = webdriver.Chrome()
-chrom_drive.get(
+driver = webdriver.Chrome()
+driver.get(
     "https://www.cathaybk.com.tw/cathaybk/personal/loan/calculator/mortgage-monthly-payments/")
 
-chrom_drive.maximize_window()
-wait_setting = WebDriverWait(chrom_drive, 3)
+driver.maximize_window()
+wait_setting = WebDriverWait(driver, 3)
 
 
 # ---- test data read from excel
@@ -21,15 +21,15 @@ excel_file = "D:\\selenium-driver\\ClassExamples\\ClassExamples\\caldata.xlsx"
 workbook = openpyxl.load_workbook(excel_file)
 sheet = workbook["Sheet2"]
 
-excel_utils.getColumnCount(excel_file, "Sheet2")
-excel_utils.getRowCount(excel_file, "Sheet2")
+excel_utils.get_column_count(excel_file, "Sheet2")
+excel_utils.get_row_count(excel_file, "Sheet2")
 
 
-title_data = excel_utils.readRow(excel_file, "Sheet2", 1)
+title_data = excel_utils.read_row(excel_file, "Sheet2", 1)
 
-row1_data = excel_utils.readRow(excel_file, "Sheet2", 2)
+row1_data = excel_utils.read_row(excel_file, "Sheet2", 2)
 
-row2_data = excel_utils.readRow(excel_file, "Sheet2", 3)
+row2_data = excel_utils.read_row(excel_file, "Sheet2", 3)
 
 
 # 用dict , title is key and row-data is value
@@ -61,10 +61,10 @@ for test_datas in total_test_data:
     loan_30year_radio_label = wait_setting.until(
         EC.presence_of_element_located((By.XPATH, "//label[@for='tab2']")))
     if test_datas['貸款年限'] == 20:
-        chrom_drive.execute_script(
+        driver.execute_script(
             "arguments[0].click();", loan_20year_radio_label)
     else:
-        chrom_drive.execute_script(
+        driver.execute_script(
             "arguments[0].click();", loan_30year_radio_label)
 
     fee = wait_setting.until(
@@ -79,12 +79,12 @@ for test_datas in total_test_data:
 
     pay_way_radio_label = wait_setting.until(
         EC.presence_of_element_located((By.XPATH, "//label[@for='customPayFor1']")))
-    chrom_drive.execute_script(
+    driver.execute_script(
         "arguments[0].click();", pay_way_radio_label)
 
     rat_label = wait_setting.until(
         EC.presence_of_element_located((By.XPATH, "//label[@for='tab-list-1']")))
-    chrom_drive.execute_script("arguments[0].click();", rat_label)
+    driver.execute_script("arguments[0].click();", rat_label)
 
     period2_input = wait_setting.until(
         EC.presence_of_element_located((By.ID, "period11")))
@@ -99,7 +99,7 @@ for test_datas in total_test_data:
     start_btn = wait_setting.until(
         EC.presence_of_element_located((By.ID, "formSubmitBtn")))
 
-    chrom_drive.execute_script("arguments[0].click();", start_btn)
+    driver.execute_script("arguments[0].click();", start_btn)
 
     result_span_list = wait_setting.until(
         EC.presence_of_all_elements_located((By.XPATH, "//span[@class='cubinvest-highlight']")))
@@ -125,14 +125,14 @@ for test_datas in total_test_data:
         errors.append(f"第240 預期:{expected_3} 實際:{actual_3}")
 
     if errors:
-        excel_utils.writeData(excel_file, "Sheet2", row,
+        excel_utils.write_data(excel_file, "Sheet2", row,
                               13, " ; ".join(errors))
-        excel_utils.fillRedColor(excel_file, "Sheet2", row, 13)
+        excel_utils.fill_red_color(excel_file, "Sheet2", row, 13)
     else:
-        excel_utils.writeData(excel_file, "Sheet2", row, 13, "OK")
-        excel_utils.fillGreenColor(excel_file, "Sheet2", row, 13)
+        excel_utils.write_data(excel_file, "Sheet2", row, 13, "OK")
+        excel_utils.fill_green_color(excel_file, "Sheet2", row, 13)
     row += 1
 
 
 workbook.close()
-chrom_drive.quit()
+driver.quit()

@@ -16,12 +16,12 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 
-chrom_drive = webdriver.Chrome()
+driver = webdriver.Chrome()
 
 
-chrom_drive.get(
+driver.get(
     "https://demo.nopcommerce.com/")
-chrom_drive.maximize_window()
+driver.maximize_window()
 
 time.sleep(5)
 
@@ -29,8 +29,8 @@ time.sleep(5)
 
 
 # ---------- ID、NAME--------#
-# search_input = chrom_drive.find_element(By.ID, "small-searchterms")
-search_input = chrom_drive.find_element(By.NAME, "q")
+# search_input = driver.find_element(By.ID, "small-searchterms")
+search_input = driver.find_element(By.NAME, "q")
 
 search_input.clear()
 search_input.send_keys("Laptop")
@@ -39,11 +39,11 @@ search_input.send_keys("Laptop")
 # ---------- Link-----------#
 # <a href="/computers" aria-expanded="false" aria-haspopup="menu" role="button" class="menu__link" tabindex="0">Computers</a>
 
-computer_menu = chrom_drive.find_element(
+computer_menu = driver.find_element(
     By.LINK_TEXT, "Computers")
-computer_menu2 = chrom_drive.find_element(
+computer_menu2 = driver.find_element(
     By.PARTIAL_LINK_TEXT, "Compu")
-# computer_menu = chrom_drive.find_element(By.XPATH, "//a[@href='/computers']")
+# computer_menu = driver.find_element(By.XPATH, "//a[@href='/computers']")
 # computer_menu.click()
 
 # time.sleep(5)
@@ -53,7 +53,7 @@ computer_menu2 = chrom_drive.find_element(
 # ---------- by class name ------#
 # <div class="swiper-slide swiper-slide-prev" style="width: 1200px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;" role="group" aria-label="1 / 2"><a href="https://demo.nopcommerce.com/apple-iphone-16-128gb"> <img class="slider-img" src="https://demo.nopcommerce.com/images/thumbs/0000079_banner_1.webp" loading="lazy"> </a></div>
 
-sliders_list = chrom_drive.find_elements(
+sliders_list = driver.find_elements(
     By.CLASS_NAME, "swiper-slide")
 # class name 如果登打複數的css，如(swiper-slide swiper-slide-prev)，會噴InvalidSelectorException: Message: Compound class names are not allowed
 
@@ -61,12 +61,12 @@ print(type(sliders_list))
 print(len(sliders_list))
 
 # 如果有複數element，但是call find_element，只會回傳第一個element
-single_slider = chrom_drive.find_element(
+single_slider = driver.find_element(
     By.CLASS_NAME, "swiper-slide")
 
 
 # ---------- by tag name ------#
-herf_list = chrom_drive.find_elements(By.TAG_NAME, "a")
+herf_list = driver.find_elements(By.TAG_NAME, "a")
 print(len(herf_list))
 for herf in herf_list:
     print(herf.get_attribute("href"))

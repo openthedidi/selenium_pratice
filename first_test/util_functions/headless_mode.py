@@ -5,8 +5,8 @@ from selenium.webdriver.common.by import By
 def get_headless_chrome_driver():
     ops = webdriver.ChromeOptions()
     ops.add_argument("--headless=new")
-    chrom_drive = webdriver.Chrome(options=ops)
-    return chrom_drive
+    driver = webdriver.Chrome(options=ops)
+    return driver
 
 
 def get_headless_edge_driver():

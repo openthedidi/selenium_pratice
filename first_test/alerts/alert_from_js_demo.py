@@ -4,19 +4,19 @@ from selenium.webdriver.common.by import By
 import time
 
 
-chrom_drive = webdriver.Chrome()
-chrom_drive.get("https://the-internet.herokuapp.com/javascript_alerts")
+driver = webdriver.Chrome()
+driver.get("https://the-internet.herokuapp.com/javascript_alerts")
 
-chrom_drive.maximize_window()
+driver.maximize_window()
 
 time.sleep(3)
 
-btn = chrom_drive.find_element(
+btn = driver.find_element(
     By.XPATH, "//button[text()='Click for JS Prompt']")
 btn.click()
 
 
-alert_window = chrom_drive.switch_to.alert
+alert_window = driver.switch_to.alert
 
 print(alert_window.text)
 # alert_window.send_keys不會出現在window中
@@ -28,4 +28,4 @@ alert_window.accept()
 
 
 input("Press Enter to close the browser...")
-chrom_drive.quit()
+driver.quit()
