@@ -31,3 +31,9 @@ class TestDemo4Parallel:
         self.driver.quit()
 
         assert True
+
+    def test_login_by_cli(self, setup):
+        self.driver = setup
+        self.driver.get("https://www.google.com")
+        assert self.driver.title == "Google"
+        self.driver.quit()
