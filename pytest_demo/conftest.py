@@ -40,3 +40,7 @@ def setup(browser):
     else:
         driver = BrowserSettings().get_chrome_driver()
     return driver
+
+
+# ------html客製--------
+# 指令：python -m  pytest -v -s -n=4 --html=.\pytest_demo\report.html --browser edge .\pytest_demo\test_4_gen_report.py
