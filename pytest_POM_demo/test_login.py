@@ -3,9 +3,9 @@ from LoginPageObject import LoginPage
 
 
 class TestLogin:
-    def test_valid_login(self, setup_login):
-        driver = setup_login
-        driver.get("https://n:n1234@nproj.walkflow.com.tw/cms/login")
+    def test_valid_login(self, setup, base_url):
+        driver = setup
+        driver.get(base_url)
         login_page = LoginPage(driver)
         login_page.enter_username("admin")
         login_page.enter_password("admin1234")
@@ -13,9 +13,9 @@ class TestLogin:
         assert "管理者" == login_page.get_success_user()
         driver.quit()
 
-    def test_invalid_login(self, setup_login):
-        driver = setup_login
-        driver.get("https://n:n1234@nproj.walkflow.com.tw/cms/login")
+    def test_invalid_login(self, setup, base_url):
+        driver = setup
+        driver.get(base_url)
         login_page = LoginPage(driver)
         login_page.enter_username("admin123")
         login_page.enter_password("adm")

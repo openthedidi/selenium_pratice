@@ -51,3 +51,7 @@ __pycache__/
 
 # Log files
 logs/
+
+# Test artifacts
+screenshots/
+report.html
