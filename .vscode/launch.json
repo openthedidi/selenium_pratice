@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run cathy_house_loan_test as module",
+      "type": "python",
+      "request": "launch",
+      "module": "first_test.excel_demo.cathy_house_loan_test",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}
