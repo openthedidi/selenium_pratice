@@ -20,5 +20,7 @@ h2_element = wait_setting.until(
 driver.save_screenshot("D:\\selenium-driver\\screenshot.png")
 driver.get_screenshot_as_file("D:\\selenium-driver\\screenshot2.png")
 
+h2_element.screenshot("D:\\selenium-driver\\screenshot3.png")
+
 
 driver.quit()
